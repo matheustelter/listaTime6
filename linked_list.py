@@ -3,7 +3,7 @@ class Node:
         self.value = value
         self.next = None
 
-    def display_node(self):
+    def displayNode(self):
         print(self.value)
 
 
@@ -11,30 +11,30 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    def is_empty(self):
+    def isEmpty(self):
         return self.head is None
 
-    def display_list(self):
-        if self.is_empty():
+    def displayList(self):
+        if self.isEmpty():
             print("Lista vazia!")
             return None
 
         current = self.head
 
         while current is not None:
-            current.display_node()
+            current.displayNode()
             current = current.next
 
-    def insert_at_beginning(self, value):
+    def insertAtBeginning(self, value):
         new_node = Node(value)
         new_node.next = self.head
         self.head = new_node
-        print(f"Valor {value} inserido no início!")
+        print(f"Valor {value} inserido no inÃ­cio!")
 
-    def insert_at_end(self, value):
+    def insertAtEnd(self, value):
         new_node = Node(value)
 
-        if self.is_empty():
+        if self.isEmpty():
             self.head = new_node
             print(f"Valor {value} inserido no fim (lista estava vazia)!")
             return
@@ -47,20 +47,20 @@ class LinkedList:
         current.next = new_node
         print(f"Valor {value} inserido no fim!")
 
-    def delete_from_beginning(self):
-        if self.is_empty():
-            print("A lista estÃ¡ vazia! NÃ£o hÃ¡ nada para excluir no início.\n")
+    def deleteFromBeginning(self):
+        if self.isEmpty():
+            print("A lista estÃ¡ vazia! NÃ£o hÃ¡ nada para excluir no inÃ­cio.\n")
             return None
 
         removed_node = self.head
         self.head = self.head.next
 
-        print(f"Valor {removed_node.value} removido do início!")
+        print(f"Valor {removed_node.value} removido do inÃ­cio!")
         return removed_node.value
 
-    def delete_from_end(self):
-        if self.is_empty():
-            print("A lista estÃ¡ vazia! NÃ£o hÃ¡ nada para excluir no início.")
+    def deleteFromEnd(self):
+        if self.isEmpty():
+            print("A lista estÃ¡ vazia! NÃ£o hÃ¡ nada para excluir no inÃ­cio.")
             return None
 
         if self.head.next is None:
@@ -80,8 +80,8 @@ class LinkedList:
         print(f"Valor {removed_node.value} removido do fim!")
         return removed_node.value
 
-    def search_list(self, searched_value):
-        if self.is_empty():
+    def searchList(self, searched_value):
+        if self.isEmpty():
             print("Lista vazia. Nada para achar!")
             return None
 
@@ -90,17 +90,17 @@ class LinkedList:
 
         while current is not None:
             if current.value == searched_value:
-                print(f"Sucesso! Valor {searched_value} foi achado na posição {position}.")
+                print(f"Sucesso! Valor {searched_value} foi achado na posiÃ§Ã£o {position}.")
                 return current
             current = current.next
             position += 1
 
-        print(f"Falha! Valor {searched_value} não encontrado na lista.")
+        print(f"Falha! Valor {searched_value} nÃ£o encontrado na lista.")
         return None
 
-    def sort_list(self):
-        if self.is_empty() or self.head.next is None:
-            print("A lista não precisa ser ordenada (está vazia ou tem só 1 elemento).\n")
+    def sortList(self):
+        if self.isEmpty() or self.head.next is None:
+            print("A lista nÃ£o precisa ser ordenada (estÃ¡ vazia ou tem sÃ³ 1 elemento).\n")
             return
 
         swapped = True
