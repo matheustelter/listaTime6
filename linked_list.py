@@ -11,7 +11,7 @@ class LinkedList:
     def isEmpty(self):
         return self.head is None
 
-    def displayList(self):
+    def getList(self):
         if self.isEmpty():
             return None
 
@@ -70,35 +70,3 @@ class LinkedList:
         removed_node = current.next
         current.next = None
         return removed_node.value
-
-    def searchList(self, searchedValue):
-        if self.isEmpty():
-            return None
-
-        current = self.head
-
-        while current is not None:
-            if current.value == searchedValue:
-                return current
-            current = current.next
-
-        return None
-
-    def sortList(self):
-        if self.isEmpty() or self.head.next is None:
-            return False
-
-        swapped = True
-
-        while swapped:
-            swapped = False
-            current = self.head
-
-            while current.next is not None:
-                if current.value > current.next.value:
-                    current.value, current.next.value = current.next.value, current.value
-                    swapped = True
-
-                current = current.next
-
-        return True
