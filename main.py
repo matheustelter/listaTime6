@@ -1,9 +1,7 @@
 from linked_list import LinkedList
 from movie import Movie
 
-def main():
-    moviesList = LinkedList()
-
+def startMenu(movieList: LinkedList):
     option = "1"
 
     while option != "0":
@@ -26,7 +24,7 @@ def main():
 
             movie = Movie(name, year)
 
-            wasInserted = moviesList.insertAtBeginning(movie)
+            wasInserted = movieList.insertAtBeginning(movie)
 
             if wasInserted:
                 print(f"Filme {name}({year}) inserido no início da lista!")
@@ -37,14 +35,14 @@ def main():
 
             movie = Movie(name, year)
 
-            wasInserted = moviesList.insertAtEnd(movie)
+            wasInserted = movieList.insertAtEnd(movie)
 
             if wasInserted:
                 print(f"Filme {name}({year}) inserido no fim da lista!")
 
         elif option == "3":
             print("--- Elementos da Lista ---")
-            movies = moviesList.getList()
+            movies = movieList.getList()
 
             if movies is None:
                 print("Lista vazia!")
@@ -56,7 +54,7 @@ def main():
  
         elif option == "4":
             name = input("Digite o filme que deseja PESQUISAR, por nome: ")
-            movies = moviesList.getList()
+            movies = movieList.getList()
 
             if movies is None:
                 print(f"Falha! Lista vazia.")
@@ -76,7 +74,7 @@ def main():
             
 
         elif option == "5":
-            removedValue = moviesList.deleteFromBeginning()
+            removedValue = movieList.deleteFromBeginning()
 
             if removedValue is None:
                 print("A lista está vazia! Não há nada para excluir no início.")
@@ -84,7 +82,7 @@ def main():
                 print(f"Valor {removedValue.name} removido do início!")
 
         elif option == "6":
-            removedValue = moviesList.deleteFromEnd()
+            removedValue = movieList.deleteFromEnd()
 
             if removedValue is None:
                 print("A lista está vazia! Não há nada para excluir no fim.")
@@ -92,7 +90,7 @@ def main():
                 print(f"Valor {removedValue.name} removido do fim!")
 
         elif option == "7":
-            wasSorted = sortMovieList(moviesList)
+            wasSorted = sortMovieList(movieList)
 
             if not wasSorted:
                 print("A lista não precisa ser ordenada (está vazia ou tem só 1 elemento).")
@@ -104,6 +102,7 @@ def main():
 
         else:
             print("Opção inválida! Por favor, tente novamente.")
+    
 
 def sortMovieList(movieList: LinkedList):
     if movieList.isEmpty() or movieList.head.next is None:
@@ -123,6 +122,12 @@ def sortMovieList(movieList: LinkedList):
             current = current.next
 
     return True
+
+
+def main():
+    moviesList = LinkedList()
+
+    startMenu(moviesList)
 
 
 if __name__ == "__main__":
