@@ -1,5 +1,30 @@
 from linked_list import LinkedList
-from movie import Movie
+from movie import *
+
+def inputMovie() -> Movie:
+    name = input("Digite o nome do filme a inserir: ")
+
+    year = int(input("Digite o ano do filme a inserir: "))
+    while(year > 2026 or year < 1):
+        year = int(input("Ano inválido! Digite o ano do filme a inserir: "))
+
+    categoriesInput = input("Digite as categorias, se houver várias digite no formato '1 2 3': ")
+    categories = [int(x) for x in categoriesInput.split()]
+
+    while(True):
+        categoriesValid = True
+        for category in categories:
+            if category < 0 or category > len(categoriesList):
+                categoriesInput = input("Categoria(s) inválida(s)! Digite as categorias, se houver várias digite no formato '1, 2, 3': ")
+                categories = [int(x) for x in categoriesInput.split()]
+                categoriesValid = False
+
+        if categoriesValid:
+            break
+        
+
+    return Movie(name, year, categories)   
+    
 
 def startMenu(movieList: LinkedList):
     option = "1"
@@ -19,26 +44,20 @@ def startMenu(movieList: LinkedList):
         print()
 
         if option == "1":
-            year = int(input("Digite o ano do filme para inserir no INÍCIO: "))
-            name = input("Digite o nome do filme para inserir no INÍCIO: ")
-
-            movie = Movie(name, year)
+            movie = inputMovie()
 
             wasInserted = movieList.insertAtBeginning(movie)
 
             if wasInserted:
-                print(f"Filme {name}({year}) inserido no início da lista!")
+                print(f"Filme {movie.name}({movie.year}) inserido no início da lista!")
 
         elif option == "2":
-            year = int(input("Digite o ano do filme para inserir no FIM: "))
-            name = input("Digite o nome do filme para inserir no FIM: ")
-
-            movie = Movie(name, year)
+            movie = inputMovie()
 
             wasInserted = movieList.insertAtEnd(movie)
 
             if wasInserted:
-                print(f"Filme {name}({year}) inserido no fim da lista!")
+                print(f"Filme {movie.name}({movie.year}) inserido no fim da lista!")
 
         elif option == "3":
             print("--- Elementos da Lista ---")
@@ -48,7 +67,7 @@ def startMenu(movieList: LinkedList):
                 print("Lista vazia!")
             else:
                 for currentMovie in movies:
-                    print(f"{currentMovie.name} ({currentMovie.year})")
+                    print(f"{currentMovie.toString()}")
  
             print("--------------------------")
  

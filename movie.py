@@ -1,11 +1,25 @@
+categoriesList = [
+    'Ação',
+    'Terror',
+    'Aventura',
+    'Suspense',
+    'Comédia',
+    'Drama',
+    'Ficção Cientifica',
+    'Adulto'
+]
+
 class Movie:
     # Para poder anexar apenas UM valor por nodo criamos uma classe filme
-    def __init__(self, name, year):
-        self.name = name
-        self.year = year
+    def __init__(self, name, year, categories):
+        self.name = name                # string
+        self.year = year                # int
+        self.categories = categories    # array de int
+        
+    def toString(self):
+        string = f"{self.name} ({self.year}) - "
 
-    def getName(self):
-        return self.name
+        for c in self.categories:
+            string = string + f"{categoriesList[c]} "
 
-    def getYear(self):
-        return self.year
+        return string
