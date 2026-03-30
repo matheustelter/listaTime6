@@ -6,7 +6,8 @@ categoriesList = [
     'Comédia',
     'Drama',
     'Ficção Cientifica',
-    'Adulto'
+    'Adulto',
+    'Gospel'
 ]
 
 class Movie:
