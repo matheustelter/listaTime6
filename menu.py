@@ -12,6 +12,10 @@ def inputMovie() -> Movie:
     while year > 2026 or year < 1:
         year = int(input("Ano invalido! Digite o ano do filme a inserir: "))
 
+    print("\nCategorias disponíveis:")
+    for i in range(len(categoriesList)):
+        print(f"{i} - {categoriesList[i]}")
+
     categoriesInput = input("Digite as categorias, se houver varias digite no formato '1 2 3': ")
     categories = [int(x) for x in categoriesInput.split()]
 
@@ -115,14 +119,14 @@ def startMenu(movieList: LinkedList):
             wasInserted = movieList.insertAtBeginning(movie)
 
             if wasInserted:
-                print(f"Filme {movie.name}({movie.year}) inserido no inicio da lista!")
+                print(f"Filme {movie.toString()} inserido no inicio da lista!")
 
         elif option == "2":
             movie = inputMovie()
             wasInserted = movieList.insertAtEnd(movie)
 
             if wasInserted:
-                print(f"Filme {movie.name}({movie.year}) inserido no fim da lista!")
+                print(f"Filme {movie.toString()} inserido no fim da lista!")
 
         elif option == "3":
             print("--- Elementos da Lista ---")
